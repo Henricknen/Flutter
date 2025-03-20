@@ -12,59 +12,72 @@ class MeuApp extends StatelessWidget {
           title: Text('Layouts')
         ),
         
-        body: Column(
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,   // centraliza a linha de icones no centro da tela
-              children: [
-                Icon(Icons.star, color: Colors.green),    // icone 'estrela'
-                Icon(Icons.star, color: Colors.green),
-                Icon(Icons.star, color: Colors.green),
-                Icon(Icons.star, color: Colors.green),
-                Icon(Icons.star, color: Colors.green)
+        body: Column(   // coluna
+          children: <Widget>[
+            Row(    // 1° linha 'Row' tem 'Expanded' com um 'Container'
+              children: <Widget>[
+                Expanded(
+                  child:Container(
+                    height:100,
+                    color:Colors.red
+                  )
+                )
               ]
             ),
-
-            Row(   // 'Row' é uma linha horizontal, que permite inserir quantos itens forem necessários
-              children: [
-                Expanded(   // 'Expanded' divide a area pela quantidade de filhos 'child' que 'children' contém
-                  child: Container(
-                    child: Text('NOME'),
-                  ),
+            Row(    // 2° linha 'Row' tem dois 'Expanded' e cada um contém um 'Container'
+              children:[
+                Expanded(   // 'Expanded' divide a figura em tamanhos iguais na linha 
+                  child:Container(
+                    width:100,
+                    height:100,
+                    color:Colors.blue
+                  )
                 ),
                 Expanded(
-                  child: Container(
-                    child: Text('SOBRENOME'),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    child: Text('IDADE'),
-                  ),
-                ),
-              ],
+                  child:Container(
+                    width:100,
+                    height:100,
+                    color:Colors.green
+                  )
+                )
+              ]
             ),
-
-            Row(    // outra linha
-              children: [
+            Row(    // 3° linha 'Row' tem três 'xpanded' e cada um tem um 'Conatainer'
+              children:<Widget>[
                 Expanded(
-                  child: Container(
-                    child: Text('Luis Henrique'),
-                  ),
+                  child:Container(
+                    width:100,
+                    height:100,
+                    color:Colors.yellow
+                  )
                 ),
                 Expanded(
-                  child: Container(
-                    child: Text('Silva Ferreira'),
-                  ),
+                  child:Container(
+                    width:100,
+                    height:100,
+                    color:Colors.orange
+                  )
                 ),
                 Expanded(
-                  child: Container(
-                    child: Text('33 anos'),
-                  ),
-                ),
-              ],
-            )
-          ]
+                  child:Container(
+                    width:100,
+                    height:100,
+                    color:Colors.black
+                  )
+                )
+              ]
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child:Container(
+                    height:100,
+                    color:Colors.pink
+                  )
+                )
+              ]
+            ),
+          ],
         )
       )
     );
