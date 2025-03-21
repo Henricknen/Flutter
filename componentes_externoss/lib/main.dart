@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'componetes.dart';   // importando arquivo externo 'componetes.dart'
 
 void main() {
   runApp(const MyApp());
@@ -36,38 +37,6 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Componente extends StatelessWidget {
-  const Componente({
-    Key? key,
-    this.title,    
-    required this.onPress,   // 'required' para garante que onPress seja obrigatório
-  }) : super(key: key);
-
-  final String? title;      // permite que title seja nulo
-  final VoidCallback onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    final String title = title ?? 'Título não obrigatório...';    // verificando se existe título
-
-    return Container(
-      width: 200,
-      color: Colors.red,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          Text(title),
-          TextButton(
-            onPressed: onPress,   // passando a função onPress
-            child: Text('Clique aqui...'),
-          ),
-        ],
       ),
     );
   }
