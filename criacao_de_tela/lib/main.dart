@@ -41,6 +41,46 @@ class MeuApp extends StatelessWidget {
                   )
                 ]
               )
+            ),
+            Container(
+              padding: EdgeInsets.all(20),
+              child:Row(
+                children:[
+                  Expanded(
+                    child: TextButton(
+                      onPressed:(){},
+                      child:Column(
+                        children:[
+                          Icon(Icons.call, color:Colors.blue),    // inserção de icone
+                          Text('Ligar')
+                        ]
+                      )
+                    )
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      onPressed:(){},
+                      child:Column(
+                        children:[
+                          Icon(Icons.location_on, color:Colors.blue),
+                          Text('Mapa')
+                        ]
+                      )
+                    )
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      onPressed:(){},
+                      child:Column(
+                        children:[
+                          Icon(Icons.share, color:Colors.blue),
+                          Text('Compartilh')
+                        ]
+                      )
+                    )
+                  ),
+                ]
+              )
             )
           ],
         )
