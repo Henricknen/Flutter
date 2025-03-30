@@ -4,9 +4,11 @@ import 'src/models/contador.dart';
 import 'src/home.dart';
 import 'src/help.dart';
 
-void main() => runApp(
-  ChangeNotifierProvider(
-    create: (context) => Contador(),
+void main() => runApp(    // runApp utilizando o model Contador
+  MultiProvider(    // utilizando 'MultiProvider' que permite utilizar varios models
+    providers: [
+      ChangeNotifierProvider(create: (context) => Contador()),
+    ],
     child: MeuApp(),
   )
 );

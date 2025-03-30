@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'models/contador.dart';
 
 class HomePage extends StatelessWidget {
     
@@ -13,9 +15,17 @@ class HomePage extends StatelessWidget {
                 child: Column(
                     children: <Widget>[
                         Text('Contagem'),
+                        Consumer<Contador>(     // 'Consumer' permite ler as informações
+                            builder: (context, contador, child) => Text(
+                                contador.valor.toString()
+                            )
+                        ),
                         ElevatedButton(     // botão
                             child: Text('Aumentar'),
                             onPressed:() {
+
+                                Provider.of<Contador>(context, listen: false).aumentar();       // 'Provider' permite excutar algo, nesse caso chama a função 'aumentar'
+
                             },
                         ),
                         ElevatedButton(

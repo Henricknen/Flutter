@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import './models/contador.dart';
  
 class HelpPage extends StatelessWidget {
   @override
@@ -10,7 +12,11 @@ class HelpPage extends StatelessWidget {
         title: Text('Titulo HELP'),
       ),
       body: Center(
-          child: Text('Texto HELP'),
+          child: Consumer<Contador>(
+            builder: (context, contador, child) => Text(
+              'Contagem: ${contador.valor}'
+            ),
+          ),
       ),
     );
   }

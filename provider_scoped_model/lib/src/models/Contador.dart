@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Contador with ChangeNotifier {        // classe que armazenará os volores que forem precisos
-    int valor = 0;      // armazendo o valor
+class Contador with ChangeNotifier {        // classe que armazenará os valores que forem precisos
+    int valor = 0;      // variável valor armazena iniçia com 0
 
-    void aumentar() {       // contador
+    void aumentar() {       // função 'contadora'
         valor++;
         notifyListeners();
     }
