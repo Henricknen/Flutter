@@ -1,51 +1,44 @@
 import 'package:flutter/material.dart';
 
-class Formulario extends StatefulWidget {
+class Formulario extends StatefulWidget {   // por causa da validação o formulário tem que ser 'Stateful'
   @override
-  _FormularioState createState() => _FormularioState();
+  _Formulario createState() => _Formulario();
 }
 
-class _FormularioState extends State<Formulario> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class _Formulario extends State<Formulario> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Formulário'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Digite o seu nome:',
-                ),
-                validator: (value) {
-                    if(value.isEmpty) {     // validador
-                        return 'É necessário digitar algo...';
-                    }
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: <Widget>[
 
-                    return null;
-                },
-              ),
-
-              TextButton(
-                child: Text('Enviar'),
-                onPressed: () {
-
-                    if(_formKey.currentState.vaidate()) {
-                        print("Formulario VALIDADO...");
-                    }
-
-                },
-              )
-            ],
+          TextFormField(    // campo de nome
+            decoration: InputDecoration(
+              hintText: 'Digite algo'
+            ),
+            validator: (value) {    // criando uma validação com 'validator' com uma função com parâmetro 'value' valor digitado no campo
+              if(value == null || value.isEmpty) {   // processo de validação, verificando se o campo está vazio
+                return 'É precisso digitar algum nome...';
+              }
+              return null;
+            },
           ),
-        ),
+
+          ElevatedButton(
+            child: Text("Enviar"),
+            onPressed: () {
+
+              if (_formKey.currentState?.validate() ?? false) {
+                print("Formulário VALIDADO!");
+              }
+
+            },
+          )
+
+        ],
       ),
     );
   }
