@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget { // Tela precisa ser 'StatefulWidget' por causa do formulário
+class LoginPage extends StatefulWidget { 
   @override
   _LoginPage createState() => _LoginPage();
 }
 
 class _LoginPage extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();    
+
+  String email = '';    // que  salvará email iniciando vazia
+  String senha = '';
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class _LoginPage extends State<LoginPage> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Digite o seu e-mail'
+                  labelText: 'Digite o seu e-mail',
                 ),
                 validator: (value) {
                   if (value?.isEmpty ?? true) {
@@ -30,30 +33,41 @@ class _LoginPage extends State<LoginPage> {
                   }
                   return null;
                 },
+                onSaved: (txt) {    // Corrigido o tipo de parâmetro
+                  email = txt ?? ''; // Salva o valor do email
+                },
               ),
+
               TextFormField(
                 obscureText: true,      // 'obscueText' oculta a senha
                 decoration: InputDecoration(
                   labelText: 'Digite a sua senha',
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {      // se senha estiver vazia
+                  if (value?.isEmpty ?? true) {      // se senha estiver vazia
                     return 'É necessário digitar uma senha';
                   }
-                  if (value?.length ?? 0 < 4) {
+                  if ((value?.length ?? 0) < 4) {     // verifica o comprimento da senha
                     return 'Senha é muito curta. (digite pelo menos 4 caracteres)';
                   }
                   return null;
                 },
+                onSaved: (txt) {
+                  senha = txt ?? '';    // salva o valor da senha
+                },
               ),
+
               ElevatedButton(
                 child: Text('Entrar'),
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
+                    _formKey.currentState?.save();   // salva o formulário
                     
-                }
+                  }
                 },
               ),
+              Text('E-mail: $email'),
+              Text('Senha: $senha')
             ],
           ),
         ),
