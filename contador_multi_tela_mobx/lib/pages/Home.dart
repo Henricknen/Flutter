@@ -15,10 +15,10 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                         Text('Contagem:'),
-                        Text('${contador.valor}'),
+                        Text('${contador.valor}'),      // mostrando valor atual do 'contador'
                         ElevatedButton(
                             child: Text('Aumentar Contagem'),
-                            onPressed: contador.aumentar,   // passando declarção da função aumentar
+                            onPressed: contador.aumentar,   // alterando valor do contador, utilizando função 'aumentar'
                         ),
                         ElevatedButton(
                             child: Text('Ir para tela Sobre'),

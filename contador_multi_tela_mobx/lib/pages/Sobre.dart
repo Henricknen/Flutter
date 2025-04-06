@@ -14,10 +14,10 @@ class SobreScreen extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                        Text('Contagem: ${contador.valor}'),
+                        Text('Contagem: ${contador.valor}'),        // mostra contagem realizada pelo contador
                         ElevatedButton(
                             child: Text('Aumentar'),
-                            onPressed: contador.aumentar,
+                            onPressed: contador.aumentar,       // chamando função 'aumentar'
                         )
                     ],
                 ),
