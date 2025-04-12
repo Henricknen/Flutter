@@ -4,16 +4,28 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import '../stores/consumo_list.dart'; // importando 'store'
 final consumos = ConsumoList();     // instânciando class 'ConsumoList'
 
-class HomeScreen extends StatefulWidget { // Corrigido de "StatefuelWidget"
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  double consumo = 0; // Corrigido de "doble consumeo = 0" e adicionado ";"
+  double consumo = 0;
 
   void _handleConsumoField(String text) {
+    setState(() {
+      if(text != '') {
+        consumo = double.parse(text);
+      } else {
+        consumo = 0;
+      }
+    });
+  }
 
+  void _handleResgistrarButton() {
+    if(consumo > 0) {
+      consumos.addConsumo( consumo );
+    }
   }
 
   @override
@@ -36,10 +48,40 @@ class _HomeScreenState extends State<HomeScreen> {
                     onChanged: _handleConsumoField
                 ),
                 TextButton(
-                    child: Text('Registrar'),
-                    onPressed: () {
-                        print('Botão clicado!');
+                    child: Text('Registrar $consumo'),
+                    onPressed: _handleResgistrarButton,
+                ),
+
+                Row(    // linha
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        children:[
+                          Text('Consumos registrados'),
+                          Text('${consumos.list.length}')
+                        ]
+                      )
+                    ),
+                    Expanded(
+                      child: Column(
+                        children:[
+                          Text('Consumo médio geral'),
+                          Text('---')
+                        ]
+                      )
+                    ),
+                  ],
+                ),
+
+                Text('Registro:'),
+                Container(
+                  height:200,
+                  child: ListView.builder(
+                    intemCount: consumos.list.length,
+                    itemBuider: (BuildContext ctx, int index) {
+                      return TExt('- ${consumos.list[index]}');
                     },
+                  ),
                 )
 
             ],
