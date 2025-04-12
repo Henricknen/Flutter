@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     keyboardType: TextInputType.number,
                     onChanged: _handleConsumoField
                 ),
-                TextButton(
+                ElevatedButton(
                     child: Text('Registrar $consumo'),
                     onPressed: _handleResgistrarButton,
                 ),
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children:[
                           Text('Consumo médio geral'),
-                          Text('---')
+                          Text('${consumos.mediaGeral}')
                         ]
                       )
                     ),
@@ -77,9 +77,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   height:200,
                   child: ListView.builder(
-                    intemCount: consumos.list.length,
-                    itemBuider: (BuildContext ctx, int index) {
-                      return TExt('- ${consumos.list[index]}');
+                    itemCount: consumos.list.length,
+                    itemBuilder: (BuildContext ctx, int index) {
+                      return Text('- ${consumos.list[index]}');
                     },
                   ),
                 )

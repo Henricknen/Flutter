@@ -8,6 +8,21 @@ abstract class _ConsumoList with Store {
   @observable
   ObservableList<double> list = ObservableList<double>();
 
+  @computed
+  String get mediaGeral {
+    if(list.length > 0) {
+      double total = 0;
+
+      list.forEach((element) {
+        total = total + element;
+      });
+
+      return (total / list .length).toStringAsFixed(2);
+    } else {
+      return '0.00';
+    }
+  }
+
   @action
   void addConsumo(double data) {
     list.add(data);
